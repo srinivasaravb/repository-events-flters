@@ -1,21 +1,28 @@
-name: Events Demo 1
+name: validate
 on: 
   workflow_dispatch:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - '**'
+    paths-ignore:
+      - '.github/workflows/*'
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
       - closed
-  push:
-    tags-ignore:
-      - '*'
     branches:
-      - main
-      - relase/*
-      - '**'
+      - '*'
+      - 'release/**'
+      - 'main'
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
@@ -28,5 +35,7 @@ jobs:
         run: npm run test
       - name: Build code
         run: npm run build
+      - name: sleep command 80 seconds
+        run: echo "Sleeping for 80 seconds ...." && sleep 80
       - name: Deploy project
         run: echo "Deploying..."
