@@ -1,19 +1,21 @@
 name: Events Demo 1
 on: 
   workflow_dispatch:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - '**'
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
       - closed
-  push:
-    tags-ignore:
-      - '*'
     branches:
-      - main
-      - relase/*
-      - '**'
+      - '*'
+      - 'release/**'
+      - 'main'
 jobs:
   deploy:
     runs-on: ubuntu-latest
