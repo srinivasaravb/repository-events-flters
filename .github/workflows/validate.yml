@@ -22,7 +22,7 @@ on:
       - '.github/workflows/*'
 jobs:
   deploy:
-    timeout-minutes: 1
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
