@@ -6,6 +6,8 @@ on:
       - '*'
     branches:
       - '**'
+    paths-ignore:
+      - '.github/workflows/*'
   pull_request:
     types:
       - opened
@@ -16,6 +18,8 @@ on:
       - '*'
       - 'release/**'
       - 'main'
+    paths-ignore:
+      - '.github/workflows/*'
 jobs:
   deploy:
     timeout-minutes: 1
