@@ -18,6 +18,7 @@ on:
       - 'main'
 jobs:
   deploy:
+    timeout-minutes: 1
     runs-on: ubuntu-latest
     steps:
       - name: Output event data
@@ -30,5 +31,7 @@ jobs:
         run: npm run test
       - name: Build code
         run: npm run build
+      - name: sleep command 80 seconds
+        run echo "Sleeping for 80 seconds ...." && sleep 80
       - name: Deploy project
         run: echo "Deploying..."
