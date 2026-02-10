@@ -4,7 +4,7 @@ on:
   push:
     tags-ignore:
       - '*'
-    branches:
+    branches-ignore:
       - '**'
     paths-ignore:
       - '.github/workflows/*'
@@ -15,10 +15,10 @@ on:
       - synchronize
       - closed
     branches:
-      - '*'
+      - '**'
       - 'release/**'
       - 'main'
-    paths-ignore:
+    paths:
       - '.github/workflows/*'
 jobs:
   deploy:
@@ -36,6 +36,6 @@ jobs:
       - name: Build code
         run: npm run build
       - name: sleep command 80 seconds
-        run: echo "Sleeping for 80 seconds ...." && sleep 80
+        run: echo "Sleeping for 80 secondss ...." && sleep 80
       - name: Deploy project
         run: echo "Deploying..."
